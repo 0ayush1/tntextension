@@ -21,18 +21,7 @@ public class OrderController {
     @PostMapping()
     public Order setOrderLineItemCustomType(@RequestBody RequestOrderDto dto)
     {
-        System.out.println(dto.getLineItemId());
         return service.setOrderLineItemCustomType(dto);
-    }
-    @GetMapping("/{orderNumber}")
-    public Order getOrderByOrderNumber(@PathVariable String orderNumber)
-    {
-        return apiRoot.orders().withOrderNumber(orderNumber).get().executeBlocking().getBody();
-    }
-    @GetMapping()
-    public OrderPagedQueryResponse getOrderByLineItemId(@RequestParam String itemId)
-    {
-        return apiRoot.orders().get().addWhere(itemId).executeBlocking().getBody();
     }
 
 }
